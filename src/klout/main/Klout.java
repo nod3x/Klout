@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import klout.types.User;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -46,16 +44,14 @@ import com.google.gson.JsonParser;
  */
 public class Klout {
 
-	private String key;
-	private String url = "http://api.klout.com/1/klout.json";
-	private Gson gson;
+	private static String url = "http://api.klout.com/1/klout.json";
+	private static Gson gson;
 	
 	/**
 	 * Constructor. 
 	 * @param key Your API key.
 	 */
 	public Klout(String key){
-		this.key = key;
 		url+="?key="+key;
 		gson = new Gson();
 	}
@@ -111,7 +107,6 @@ public class Klout {
 			u.setUname(users.get(i));
 			Users.add(u);
 		}
-		
 		return Users;
 	}
 	
